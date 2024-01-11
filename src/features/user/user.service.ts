@@ -8,20 +8,20 @@ import * as bcrypt from 'bcrypt';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>
-  ) { }
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
 
   async create(model: CreateUserDTO): Promise<User> {
     return await this.userRepository.save({
       ...model,
       jobName: 'IT',
-      password: await this.createPasswordDefault()
+      password: await this.createPasswordDefault(),
     });
   }
 
   async update(model: UpdateUserDTO): Promise<User> {
     const user = await this.userRepository.findOneBy({
-      id: model.id
+      id: model.id,
     });
 
     if (!user) throw new NotFoundException('User not found');
@@ -45,11 +45,10 @@ export class UserService {
     const password = '1111';
     return await bcrypt.hash(password, saltOrRounds);
   }
-  
+
   async findByEmail(email: string): Promise<User> {
     return await this.userRepository.findOneBy({
-      email
-    }) 
+      email,
+    });
   }
 }
-

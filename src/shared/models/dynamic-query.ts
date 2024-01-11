@@ -8,7 +8,6 @@ import {
   ValidateNested,
 } from 'class-validator';
 
-
 export interface IQueryRule {
   field: string;
   operator: string;

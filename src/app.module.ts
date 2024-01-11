@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { AuthModule } from './core/auth/auth.module';
 import { UserModule } from './features/user/user.module';
 import { Module } from '@nestjs/common';
@@ -13,6 +14,7 @@ import * as winston from 'winston';
 
 @Module({
   imports: [
+    CoreModule,
     AuthModule,
     UserModule,
     ConfigModule.forRoot({
@@ -56,4 +58,4 @@ import * as winston from 'winston';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
