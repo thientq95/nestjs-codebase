@@ -1,3 +1,5 @@
+import { CategoryModule } from './features/category/category.module';
+import { NewsModule } from './features/news/news.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './core/auth/auth.module';
 import { UserModule } from './features/user/user.module';
@@ -14,6 +16,8 @@ import * as winston from 'winston';
 
 @Module({
   imports: [
+    CategoryModule,
+    NewsModule,
     CoreModule,
     AuthModule,
     UserModule,
@@ -58,4 +62,4 @@ import * as winston from 'winston';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

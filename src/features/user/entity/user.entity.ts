@@ -1,9 +1,11 @@
+import { Exclude } from 'class-transformer';
+import BaseEntity from 'src/shared/base/entity/base.entity';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({
   name: 'users',
 })
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,6 +20,7 @@ export class User {
   @Column({ name: 'email' })
   email: string;
 
+  @Exclude()
   @Column({ name: 'password' })
   password: string;
 
@@ -30,6 +33,7 @@ export class User {
   @Column({ name: 'updated_by', nullable: true })
   updatedBy?: number;
 
+  @Exclude()
   @Column({
     name: 'is_deleted',
     default: false,
